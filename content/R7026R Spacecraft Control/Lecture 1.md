@@ -15,7 +15,7 @@ tags:
 
 ## Summary
 <!-- AFTER: answer the Question in my own words, max 3 sentences -->
-
+First lecture is mostly repetition of the R0005E course (reglerteknik). It goes through the fundamentals such as the following key concepts. 
 
 ## Key concepts
 <!-- One line each: what it is + why it matters -->
