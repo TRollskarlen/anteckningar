@@ -17,8 +17,8 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Schibsted Grotesk
-      body: Source Sans Pro
+      header: Source Serif 4
+      body: Source Serif 4
       code: IBM Plex Mono
     colors:
       lightMode:
@@ -94,7 +94,7 @@ plugins:
   - source: "@quartz-community/latex"
     enabled: true
     options:
-      renderEngine: katex
+      renderEngine: mathjax
     order: 80
   - source: "@quartz-community/citations"
     enabled: false
