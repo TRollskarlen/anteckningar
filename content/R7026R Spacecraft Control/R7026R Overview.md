@@ -1,7 +1,7 @@
 # R7026R Spacecraft Control
 
 ## Lectures
-- [[Lecture 1]] – Review of classical control
+- [[R7026R Spacecraft Control/Lecture 1]] – Review of classical control
 - [[Lecture 2]] – State-space models and stability
 - [[Lecture 3]] – Controllability and observability
 

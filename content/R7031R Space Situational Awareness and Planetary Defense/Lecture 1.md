@@ -1,15 +1,16 @@
 ---
-course: R7026R
-lecture: 
-topic: 
-date: "{{date}}"
-slides: 
+course: R7031R
+lecture: "1"
+topic: Introduction to Space Situational Awareness and Planetary Defense
+date: 2026-11-10
+slides:
 status: draft
-tags: [lecture, R7026R]
+tags:
+  - lecture
 ---
 
 **Question:** 
-**Builds on:** [[Lecture ]] · **Leads to:** [[Lecture ]]
+**Builds on:** [[(Lecture)]] · **Leads to:** [[(Lecture)]]
 
 ## Summary
 <!-- AFTER: answer the Question in my own words, max 3 sentences -->
@@ -47,4 +48,3 @@ where
 - [ ] 
 
 ---
-[[R7026R Overview]]
