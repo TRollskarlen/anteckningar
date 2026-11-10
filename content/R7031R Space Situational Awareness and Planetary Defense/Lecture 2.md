@@ -1,0 +1,93 @@
+---
+course: R7031R
+lecture: "2"
+topic:
+date: 2026-11-10
+slides:
+status: draft
+tags:
+  - lecture
+---
+
+**Question:** 
+**Builds on:** [[(Lecture)]] · **Leads to:** [[(Lecture)]]
+
+## Summary
+<!-- AFTER: answer the Question in my own words, max 3 sentences -->
+
+
+## Key concepts
+<!-- One line each: what it is + why it matters -->
+- **Term:** 
+
+## Notes
+<!-- DURING: only what is NOT on the slides. Refer to slides as (s. 12) -->
+Detection and Tracking: 
+
+There are two parts to this. Satellites and debris - cataloging. And there are NEOs: Near earth objects. The catalogue of satellites and debris are updated by re-observing the already logged objects.....
+
+1. Detect 
+2. Associate
+3. Preliminary Orbit
+4. Refine
+5. Catalogue
+6. Predict, Warning
+
+This was the overview of detection and tracking. 
+
+Optical telescoped discover almost every near earth orbit. By catching the reflected light coming of the objects. The light follows the inverse square law and can be used to calculate the distance of the object.....
+
+Definitions: 
+* Apparent motion: How the position of an object changes over time. Measured as angular rate which depends on the objects orbit. 
+* Apparent brightness: Tells us how bright the object is when observed from the earth. Observed as  flux or apparent magnitude. Depends on the objects size, reflectivity, distance, angle between them, the sun and the observer. The brightness can change as the object rotates.
+* Absolute brightness (For NEOS): The apparent magnitude the object would have if it were 1 AU from the sun...
+
+Measurements: An optical sensor can deliver:
+* Angular positions, typically measured to an accuracy of 0.1-1'' relative to a star catalogue (astrometry!)............
+
+
+Observing geometry: 
+A satellite needs to be out of the shadow of the earth to be illuminated by the earth. 
+
+$$
+h > R_{earth}\left( \frac{1}{\cos_{d}} -1 \right)
+$$
+(s.1 - 20)
+
+Telescopes and Detectors:
+
+SNR - compares the ratio of signal and noise. A higher SNR makes the object easier to distinguish from its surrounding. A low SNR image gives a less precise position and brightness measurement. 
+
+There a two different types of tracking. 
+
+1. Active (Rate) tracking: 
+	Focusing on a single object makes the surrounding objects look like streaks across the sky except for the object in focus.
+2. Surveying - Sidereal tracking: 
+	The telescope is pointed in one general direction over a period of time. The objects which are moving really fast (close to earth) will become streams on the images instead of steady dots. 
+
+Astrometry
+Its a way to go from pixel position to a real position in the sky. You compare your image to well known objects in the same image, which gives you a idea of where your object should be. The well known objects positions exist in catalogues such as GAIA DR3.
+
+
+hoh lee sheet, way to fast teaching. 
+## Formulas
+<!-- Only what I must know. Say what each symbol means -->
+'' = Arc seconds  
+
+## Worked example
+<!-- AFTER: redo one example from the slides by hand, without looking -->
+**Problem:** 
+
+**Solution:** 
+
+
+## Self-test
+<!-- AFTER: 2–3 questions to quiz myself before the exam -->
+- Q: 
+- Q: 
+
+## Open questions
+<!-- DURING: write it down, keep listening. Tick when answered -->
+- [ ] 
+
+---
