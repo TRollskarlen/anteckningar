@@ -2,8 +2,8 @@
 
 ## Lectures
 - [[R7026R L1]] – Review of classical control
-- [[R7031R L2]] – State-space models and stability
-- [[Lecture 3]] – Controllability and observability
+- [[R7026R L2]] – State-space models and stability
+- [[R7026R L3]] – Controllability and observability
 
 ## Key dates
 - Project 1: start after Lecture 4
