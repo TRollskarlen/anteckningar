@@ -10,7 +10,7 @@ tags:
 ---
 
 **Question:** 
-**Builds on:** [[(Lecture)]] · **Leads to:** [[(Lecture)]]
+**Builds on:** [[]] · **Leads to:** [[]]
 
 ## Summary
 <!-- AFTER: answer the Question in my own words, max 3 sentences -->
