@@ -1,7 +1,7 @@
 ---
 course: R7026R
 lecture: "3"
-topic: something
+topic: matrises and observability
 date: 2026-11-11
 slides:
 status: draft
@@ -93,6 +93,24 @@ B^T & 0
 \end{bmatrix}
 $$
 The figure on slide 36 (lowest one, is wrong, $B^T$ should switch place with $C^T$)
+
+Control Canonical Form: 
+$$
+\begin{bmatrix}
+-a_{1} & -a_{2} & -a_{3} \\
+1 & 0 & 0 \\
+0 & 1 & 0
+\end{bmatrix}
+$$
+Observable Canonical Form
+$$
+
+$$
+If you can write the system in Observable Canonical Form it will be 100% observable. Just the same if it can be written in Control Canonical Form it can be 100% controlled (Fact check this). 
+
+To write in observable canonical form, apply controllable form, then dual then transpose back...
+
+Careful with wording, write $\neq$ transform. They might
 
 ## Worked example
 <!-- AFTER: redo one example from the slides by hand, without looking -->
