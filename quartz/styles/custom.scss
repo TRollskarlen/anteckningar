@@ -272,27 +272,26 @@ html[saved-theme] body article a.internal.broken {
   opacity: 0.8;
 }
 
-// ── Images: card look so the white PDF crops sit nicely ─────
+// ── Images: blend the white PDF crops into the page ─────────
+// All figures are diagrams on white. Light mode: `multiply` makes the
+// white disappear into the page. Dark mode: invert (hue-rotate keeps the
+// colours roughly the same) so white becomes black, and `screen` makes
+// black disappear, leaving light lines on the dark page.
 article img {
   display: block;
   margin: 1.4rem auto;
   max-width: 100%;
-  border-radius: 10px;
-  border: 1px solid var(--surface-border);
-  box-shadow: var(--shadow);
-  background: #fff;
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  mix-blend-mode: multiply;
+  transition: transform 0.25s ease;
 
   &:hover {
-    transform: translateY(-2px) scale(1.01);
-    box-shadow: var(--shadow-hover);
+    transform: scale(1.02);
   }
 }
 
 :root[saved-theme="dark"] article img {
-  padding: 6px;
+  filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  mix-blend-mode: screen;
 }
 
 // ── Callouts: glassy, coloured edge ──────────────────────────
@@ -559,21 +558,8 @@ footer {
   font-size: 0.85rem;
 }
 
-// ── Motion: gentle fade-in of page content ───────────────────
-.center > article {
-  animation: fade-up 0.45s ease both;
-}
-
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
+// (No fade-in on the article: an animated ancestor becomes its own
+// stacking context and stops the images from blending with the page.)
 
 @media (prefers-reduced-motion: reduce) {
   *,

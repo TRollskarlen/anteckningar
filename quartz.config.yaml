@@ -244,6 +244,10 @@ plugins:
     options:
       includeAll: false
       includedProperties:
+        - course
+        - lecture
+        - topic
+        - status
         - description
         - tags
         - aliases
