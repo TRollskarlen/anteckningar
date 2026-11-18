@@ -1,9 +1,593 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+// ─────────────────────────────────────────────────────────────
+//  Anteckningar – custom theme ("deep space")
+//  Colours come from quartz.config.yaml; this file adds the
+//  accents, glass surfaces, cards and motion on top.
+// ─────────────────────────────────────────────────────────────
+
+// The Obsidian theme plugin (@quartz-themes/core) sets its colours inside
+// CSS layers; these unlayered declarations win over them.
+:root {
+  --bg-page: #fbfbfe;
+  --light: #fbfbfe;
+  --lightgray: #e3e3f0;
+  --gray: #8a8ca8;
+  --darkgray: #3b3d52;
+  --dark: #191a2b;
+  --secondary: #6d28d9;
+  --tertiary: #0891b2;
+  --highlight: rgba(109, 40, 217, 0.07);
+  --textHighlight: #fde04788;
+  --background-primary: #fbfbfe;
+  --background-primary-alt: #f3f2fa;
+  --background-secondary: #f3f2fa;
+  --background-modifier-border: #e3e3f0;
+  --text-normal: #2a2b3d;
+  --text-muted: #6b6d85;
+  --text-faint: #9a9cb5;
+  --text-accent: #6d28d9;
+  --text-accent-hover: #0891b2;
+  --color-accent: #6d28d9;
+  --interactive-accent: #6d28d9;
+  --text-highlight-bg: #fde04788;
+  --tag-color: #6d28d9;
+  --tag-background: rgba(109, 40, 217, 0.08);
+  --tag-background-hover: rgba(109, 40, 217, 0.14);
+
+  --accent-a: #7c3aed;
+  --accent-b: #06b6d4;
+  --accent-c: #ec4899;
+  --grad: linear-gradient(120deg, var(--accent-a), var(--accent-b));
+  --grad-wide: linear-gradient(90deg, var(--accent-a), var(--accent-b), var(--accent-c), var(--accent-a));
+  --surface: rgba(255, 255, 255, 0.7);
+  --surface-border: rgba(25, 26, 43, 0.08);
+  --shadow: 0 1px 2px rgba(20, 20, 50, 0.04), 0 8px 24px rgba(20, 20, 50, 0.06);
+  --shadow-hover: 0 2px 4px rgba(20, 20, 50, 0.06), 0 16px 40px rgba(109, 40, 217, 0.16);
+  --radius: 14px;
+}
+
+:root[saved-theme="dark"] {
+  --bg-page: #0b0d17;
+  --light: #0b0d17;
+  --lightgray: #252940;
+  --gray: #7b81a6;
+  --darkgray: #cfd3e6;
+  --dark: #f1f2fa;
+  --secondary: #a78bfa;
+  --tertiary: #22d3ee;
+  --highlight: rgba(167, 139, 250, 0.1);
+  --textHighlight: #f5c54255;
+  --background-primary: #0b0d17;
+  --background-primary-alt: #11142a;
+  --background-secondary: #0e1120;
+  --background-modifier-border: #252940;
+  --text-normal: #d6d9ea;
+  --text-muted: #9097b8;
+  --text-faint: #6b7194;
+  --text-accent: #a78bfa;
+  --text-accent-hover: #22d3ee;
+  --color-accent: #a78bfa;
+  --interactive-accent: #8b5cf6;
+  --text-highlight-bg: #f5c54255;
+  --tag-color: #c4b5fd;
+  --tag-background: rgba(167, 139, 250, 0.12);
+  --tag-background-hover: rgba(167, 139, 250, 0.2);
+
+  --accent-a: #8b5cf6;
+  --accent-b: #22d3ee;
+  --accent-c: #f472b6;
+  --surface: rgba(22, 25, 42, 0.62);
+  --surface-border: rgba(255, 255, 255, 0.07);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.4), 0 18px 48px rgba(139, 92, 246, 0.22);
+}
+
+// ── Background: soft aurora + (dark mode) starfield ─────────
+// Let the body background show through the theme's panels.
+// (only on wider screens: on mobile the explorer is an overlay that slides
+// in underneath the content, so the content must keep its fill)
+@media (min-width: 801px) {
+  #quartz-root.page,
+  #quartz-body,
+  #quartz-body .center,
+  #quartz-body .sidebar {
+    background-color: transparent !important;
+  }
+}
+
+// Explorer list: no tinted box behind it (desktop only, see above)
+@media (min-width: 801px) {
+  .explorer .explorer-content,
+  .explorer ul.explorer-ul {
+    background-color: transparent;
+  }
+}
+
+@media #{$desktop} {
+  #quartz-body .sidebar.left {
+    border-right: 1px solid var(--lightgray);
+  }
+  #quartz-body .sidebar.right {
+    border-left: 1px solid var(--lightgray);
+  }
+}
+
+body {
+  background-color: var(--bg-page);
+  background-image:
+    radial-gradient(60rem 40rem at 85% -10%, rgba(124, 58, 237, 0.07), transparent 60%),
+    radial-gradient(50rem 35rem at -10% 110%, rgba(6, 182, 212, 0.06), transparent 60%);
+  background-attachment: fixed;
+}
+
+:root[saved-theme="dark"] body {
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgba(255, 255, 255, 0.55), transparent 60%),
+    radial-gradient(1px 1px at 72% 8%, rgba(255, 255, 255, 0.45), transparent 60%),
+    radial-gradient(1.5px 1.5px at 38% 62%, rgba(255, 255, 255, 0.35), transparent 60%),
+    radial-gradient(1px 1px at 88% 44%, rgba(255, 255, 255, 0.5), transparent 60%),
+    radial-gradient(1px 1px at 22% 86%, rgba(255, 255, 255, 0.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 60% 92%, rgba(255, 255, 255, 0.3), transparent 60%),
+    radial-gradient(1px 1px at 52% 30%, rgba(255, 255, 255, 0.3), transparent 60%),
+    radial-gradient(60rem 40rem at 85% -10%, rgba(139, 92, 246, 0.16), transparent 60%),
+    radial-gradient(50rem 35rem at -10% 110%, rgba(34, 211, 238, 0.10), transparent 60%);
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+}
+
+// ── Reading-progress bar (pure CSS, progressive enhancement) ─
+@supports (animation-timeline: scroll()) {
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 3px;
+    z-index: 999;
+    background: var(--grad);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    animation: read-progress linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes read-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+// ── Typography ───────────────────────────────────────────────
 article p,
 article li,
 article td,
 article blockquote {
   font-family: "Source Serif 4", serif !important;
+}
+
+article {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.015em;
+  font-weight: 650;
+}
+
+.page-title {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+
+  a {
+    background: var(--grad-wide);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 12s ease-in-out infinite;
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+h1.article-title {
+  font-size: 2.6rem;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  margin: 0.6rem 0 0.4rem;
+  background: linear-gradient(120deg, var(--dark) 30%, var(--secondary) 75%, var(--tertiary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.1em; // keep descenders from being clipped
+}
+
+article h2 {
+  position: relative;
+  margin-top: 2.6rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--lightgray);
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 3.5rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--grad);
+  }
+}
+
+article h3 {
+  margin-top: 1.9rem;
+  color: var(--secondary);
+}
+
+// Links: gradient underline that grows on hover
+html[saved-theme] body article a.internal,
+html[saved-theme] body article a.external {
+  background-color: transparent;
+  color: var(--secondary);
+  font-weight: 600;
+  text-decoration: none;
+  background-image: var(--grad);
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  padding: 0 1px;
+  transition:
+    background-size 0.25s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background-size: 100% 2px;
+    color: var(--tertiary);
+  }
+}
+
+// Broken/unpublished links (e.g. the private slide PDFs) – show muted
+html[saved-theme] body article a.internal.broken {
+  color: var(--gray);
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+// ── Images: card look so the white PDF crops sit nicely ─────
+article img {
+  display: block;
+  margin: 1.4rem auto;
+  max-width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow);
+  background: #fff;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+:root[saved-theme="dark"] article img {
+  padding: 6px;
+}
+
+// ── Callouts: glassy, coloured edge ──────────────────────────
+.callout {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--color);
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--bg), transparent 140%);
+  box-shadow: var(--shadow);
+  margin: 1.3rem 0;
+
+  .callout-title {
+    font-family: var(--headerFont);
+    letter-spacing: -0.01em;
+  }
+}
+
+// ── Tables ───────────────────────────────────────────────────
+.table-container {
+  border-radius: 12px;
+  border: 1px solid var(--lightgray);
+  box-shadow: var(--shadow);
+  margin: 1.4rem 0;
+
+  > table {
+    margin: 0;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    background: var(--highlight);
+    font-family: var(--headerFont);
+    text-align: left;
+  }
+
+  th,
+  td {
+    padding: 0.55rem 0.9rem;
+    border-bottom: 1px solid var(--lightgray);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tbody tr:hover {
+    background: var(--highlight);
+  }
+}
+
+// ── Code & math ──────────────────────────────────────────────
+pre {
+  border-radius: 12px;
+  border: 1px solid var(--lightgray);
+  box-shadow: var(--shadow);
+}
+
+code {
+  border-radius: 6px;
+}
+
+mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.4rem 0;
+}
+
+// ── Sidebars ─────────────────────────────────────────────────
+.search > .search-button {
+  border-radius: 999px;
+  border: 1px solid var(--lightgray);
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px var(--highlight);
+  }
+}
+
+.search > .search-container > .search-space {
+  border-radius: 16px;
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow-hover);
+  backdrop-filter: blur(16px);
+}
+
+.explorer {
+  .nav-file-title,
+  .folder-container {
+    border-radius: 8px;
+    transition:
+      background-color 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  a.nav-file-title:hover,
+  .folder-container:hover {
+    background-color: var(--highlight);
+    transform: translateX(2px);
+  }
+
+  .folder-title {
+    font-family: var(--headerFont);
+    font-weight: 600;
+  }
+}
+
+.graph > .graph-outer,
+.toc,
+.backlinks {
+  border-radius: var(--radius);
+}
+
+.graph > .graph-outer {
+  border: 1px solid var(--surface-border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.toc ul li a {
+  transition: color 0.15s ease;
+}
+
+.toc ul li a.in-view {
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+// Tag pills
+a.tag-link,
+.tags a {
+  border-radius: 999px;
+  border: 1px solid var(--lightgray);
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--secondary);
+  }
+}
+
+// ── Home page: hero + course cards ───────────────────────────
+html[saved-theme] body[data-slug="index"] {
+  h1.article-title {
+    font-size: clamp(2.8rem, 6vw, 4.2rem);
+    background: var(--grad-wide);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmer 14s ease-in-out infinite;
+  }
+
+  article > p:first-of-type,
+  .markdown-rendered > p:first-of-type {
+    font-size: 1.2rem;
+    color: var(--darkgray);
+    max-width: 38rem;
+  }
+
+  article h2 {
+    border-bottom: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gray);
+    margin-top: 2.4rem;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  article ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1rem;
+  }
+
+  article ul > li {
+    margin: 0;
+    counter-increment: course;
+
+    &::marker {
+      content: none;
+    }
+  }
+
+  article ul > li > a.internal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 8.5rem;
+    padding: 1.2rem 1.3rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--surface-border);
+    background:
+      radial-gradient(18rem 10rem at 100% 0%, rgba(124, 58, 237, 0.16), transparent 70%),
+      radial-gradient(14rem 8rem at 0% 100%, rgba(6, 182, 212, 0.12), transparent 70%),
+      var(--surface);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    color: var(--dark);
+    font-family: var(--headerFont);
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.3;
+    overflow: hidden;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+
+    // course number badge
+    &::before {
+      content: "0" counter(course);
+      position: absolute;
+      top: 1rem;
+      left: 1.3rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    // arrow
+    &::after {
+      content: "→";
+      position: absolute;
+      top: 0.85rem;
+      right: 1.2rem;
+      font-size: 1.2rem;
+      color: var(--gray);
+      transition:
+        transform 0.25s ease,
+        color 0.25s ease;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(139, 92, 246, 0.45);
+      background-size: auto;
+      color: var(--dark);
+
+      &::after {
+        transform: translateX(4px);
+        color: var(--secondary);
+      }
+    }
+  }
+}
+
+// ── Footer ───────────────────────────────────────────────────
+footer {
+  opacity: 0.75;
+  font-size: 0.85rem;
+}
+
+// ── Motion: gentle fade-in of page content ───────────────────
+.center > article {
+  animation: fade-up 0.45s ease both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+// Body text: the Obsidian theme renders paragraphs in its muted colour;
+// use the normal text colour for better contrast.
+html[saved-theme] body article p,
+html[saved-theme] body article li,
+html[saved-theme] body article td {
+  color: var(--text-normal);
 }
