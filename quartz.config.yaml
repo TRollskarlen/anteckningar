@@ -13,6 +13,7 @@ configuration:
     - templates
     - Templates
     - .obsidian
+    - Slides
   theme:
     fontOrigin: googleFonts
     cdnCaching: true
